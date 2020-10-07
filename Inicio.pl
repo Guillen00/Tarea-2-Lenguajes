@@ -1,3 +1,5 @@
+%----------------------Incluir Archivos--------------------------
+:- [bnf].
 %----------------------Listas-------------------------------------
 saludo:- write('Hola!!! ¿Qué se te antoja comer hoy?'),
          write('\n').
@@ -33,11 +35,12 @@ inicio:-
 conversacion:-
     imprimir_usuario(usuario),
     readln(S),
-    append(S,[' n'],M),
+    append(S,[],M),
     generar_respuesta(M).
 
 generar_respuesta(M):-
-    patron(M,R),
+     %patron(M,R),
+    analizar(M,R),
     (verificar(R) -> write('De que tamano lo deseas'); write('Aun no contamos con algun registro de esa comida.')   ).
 
-:- inicio.
+
