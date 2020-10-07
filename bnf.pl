@@ -1,5 +1,12 @@
+
+
 analizar(S0,R0):-unlist(R,R0),
-                oracion(S0,[], R).
+		remover(.,S0,S),
+                oracion(S,[], R).
+
+remover(X, [X|Xs], Xs). 
+remover(X, [Y|Ys], [Y|Zs]):- 
+remover(X, Ys, Zs).
 
 unlist([X|_],X):-!.
 
