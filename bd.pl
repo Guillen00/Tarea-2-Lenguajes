@@ -12,7 +12,7 @@ menu(mcBurguesa,comidaRapida).
 %-------------------------------------------------------------------
 
 
-comida(italiano,pizza).
+comida(bellaItalia,pizza).
 comida(italiano,calzone).
 comida(italiano,espagueti).
 comida(comidaRapida,hamburguesas).
@@ -39,4 +39,4 @@ lugar(bellaItalia,sanPedro).
 lugar(mcBurguesa,cartago).
 %------------------------------------------------------------------
 
-dondeComer(A,B,C,D,E) :- restaurante(A), menu(A,B),comida(B,C), lugar(A,D),capacidad(A,Z),Z<E.
+dondeComer(A,C,D,E) :- restaurante(A),comida(A,C), lugar(A,D),capacidad(A,Z),Z>E.

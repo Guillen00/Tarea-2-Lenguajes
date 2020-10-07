@@ -51,7 +51,7 @@ generar_respuesta(M):-
     leer(D,V),
     dondeComer(A,R,V,Z),
 
-     write(A)
+     write(A),write(R),write(V),write(Z)
      .
 %(verificar(R) -> pregunta(R,[X|_]), imprimir_lista(X),readln(D),
  %    pregunta(R,[_|Y]), imprimir_lista(Y),readln(E),
