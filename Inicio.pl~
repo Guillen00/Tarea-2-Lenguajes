@@ -59,13 +59,19 @@ conversacion:-
 generar_respuesta(M):-
      %patron(M,R),
     analizar(M,R),
-    pregunta(R,[X|_]), imprimir_lista(X),readln(D),analizar(D,T),
-    pregunta(R,[_|Y]), leer(Y,C),imprimir_lista(C),readln(E),analizar(E,Q),
+    pregunta(R,[X|_]),imprimir_usuario(bot),
+    imprimir_lista(X),
+    imprimir_usuario(usuario),
+    readln(D),analizar(D,T),
+    pregunta(R,[_|Y]), leer(Y,C),imprimir_usuario(bot),
+    imprimir_lista(C),
+    imprimir_usuario(usuario),
+    readln(E),analizar(E,Q),
     %leer(Q,Z),
 
     %leer(T,V),
     dondeComer(A,R,T,Q),
-
+    imprimir_usuario(bot),
     write('Te recomendamos el restaurante '),write(A),write(' Ubicado en '),
     write(T),write('\n'),
     write('Su reservación ha sido tramitada.'),write('\n'),write('Recuerde: Que por disposiciones del Ministerio de Salud solo se permiten burbujas y durante la espera se debe utilizar mascarilla.').

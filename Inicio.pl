@@ -59,6 +59,7 @@ conversacion:-
 generar_respuesta(M):-
      %patron(M,R),
     analizar(M,R),
+    (verificar(R) ->
     pregunta(R,[X|_]),imprimir_usuario(bot),
     imprimir_lista(X),
     imprimir_usuario(usuario),
@@ -70,11 +71,15 @@ generar_respuesta(M):-
     %leer(Q,Z),
 
     %leer(T,V),
-    dondeComer(A,R,T,Q),
+
+    (dondeComer(A,R,T,Q) ->
     imprimir_usuario(bot),
     write('Te recomendamos el restaurante '),write(A),write(' Ubicado en '),
     write(T),write('\n'),
-    write('Su reservación ha sido tramitada.'),write('\n'),write('Recuerde: Que por disposiciones del Ministerio de Salud solo se permiten burbujas y durante la espera se debe utilizar mascarilla.').
+    write('Su reservación ha sido tramitada.'),write('\n'),write('Recuerde: Que por disposiciones del Ministerio de Salud solo se permiten burbujas y durante la espera se debe utilizar mascarilla.')
+    ;write('Aun no contamos con algun registro de algun restaurante con esas especificaciones.') )
+    ;
+    write('Aun no contamos con algun registro de esa comida.')).
 
 %(verificar(R) -> pregunta(R,[X|_]), imprimir_lista(X),readln(D),
  %    pregunta(R,[_|Y]), imprimir_lista(Y),readln(E),
