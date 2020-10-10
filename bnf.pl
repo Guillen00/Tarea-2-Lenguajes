@@ -1,11 +1,10 @@
 
-
 analizar(S0,R0):-unlist(R,R0),
 		remover(.,S0,S),
                 oracion(S,[], R).
 
-remover(X, [X|Xs], Xs). 
-remover(X, [Y|Ys], [Y|Zs]):- 
+remover(X, [X|Xs], Xs).
+remover(X, [Y|Ys], [Y|Zs]):-
 remover(X, Ys, Zs).
 
 unlist([X|_],X):-!.
@@ -30,6 +29,21 @@ oracion(S0,S, R) :-
 oracion(S0,S, R) :-
     sintagma_nominal(S0, S1),
     sintagma_verbal(S1, S, R).
+
+%Deseo reservar para 5 personas
+oracion(S0,S, R) :-
+    sintagma_verbal0(S0, S1),
+    proposicion(S1,S2),
+    adjetivos(S2,S),
+    R=S2.
+
+%Deseo reservar para 5 personas
+oracion(S0,S, R) :-
+    sintagma_verbal0(S0, S1),
+    proposicion(S1,S2),
+    adjetivos(S2,S3),
+    sintagma_nominal(S3,S),
+    R=S2.
 
 %Hoy yo quiero pizza
 oracion(S0,S, R) :-
@@ -89,10 +103,13 @@ sintagma_nominal2(S0, S,R) :-
     sustantivo2(S0,S),
     R=S0.
 
+sintagma_verbal0(S0, S) :-
+    verbo(S0, S1),
+    sintagma_nominal(S1, S).
+
 sintagma_verbal(S0, S, R) :-
     verbo(S0, S1),
     sintagma_nominal2(S1, S, R).
-
 
 
 % Adverbios
