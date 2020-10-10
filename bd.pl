@@ -5,10 +5,11 @@ restaurante(asadoCR).
 restaurante(miTierra).
 
 
-comida(bellaItalia,pizza).
+comida(bellaItalia,pizza,jamon).
 comida(bellaItalia,calzone).
 comida(bellaItalia,espagueti).
 comida(bellaItalia,lazana).
+
 
 comida(mcBurguesa,hamburguesas).
 comida(mcBurguesa,tacos).
@@ -80,15 +81,17 @@ direccion(asadoCR," 25m norte de la entrada principal de la UNA").
 
 dispocisiones(bellaItalia,"Solo se permiten burbujas").
 dispocisiones(mcBurguesa,"Solo se permiten burbujas recordar el uso de mascarilla y el lavado de manos antes de ingresar al local").
-dispocisiones(mcBurguersa,"Recordar el uso de mascarilla y el lavado de manos antes de ingresar al local").
+dispocisiones(italianisimo ,"Recordar el uso de mascarilla y el lavado de manos antes de ingresar al local").
 dispocisiones(asadosCR," Recuerde que debemos cuidarnos, utilice la mascarilla y haga el lavado de manos adecuado antes de entrar al local").
 dispocisiones(miTierra,"Venga con su burbuja social y protejamonos todos").
 
 
 
 
-dondeComer(RESTAURANTE,COMIDA,LUGAR,BEBIDA,Npersonas) :- restaurante(RESTAURANTE),
+dondeComer(RESTAURANTE,COMIDA,LUGAR,BEBIDA,Npersonas,TP) :- restaurante(RESTAURANTE),
+    comida(RESTAURANTE,COMIDA,TP);
     comida(RESTAURANTE,COMIDA),
     bebida(RESTAURANTE,BEBIDA),
     lugar(RESTAURANTE,LUGAR),
     capacidad(RESTAURANTE,Capacidad),Capacidad>Npersonas.
+

@@ -60,11 +60,15 @@ generar_respuesta(M):-
     imprimir_lista(Z),
     imprimir_usuario(usuario),
     readln(B),analizar(B,N),
+    (valorarPizza(R) -> imprimir_usuario(bot),  write('De que sabor desea su pizza'),write('\n'),
+     imprimir_usuario(usuario),
+     readln(U),analizar(U,O); O='no hay nada'),
+
     %leer(Q,Z),
 
     %leer(T,V),
 
-    (dondeComer(A,R,T,N,Q) ->
+    (dondeComer(A,R,T,N,Q,O) ->
     imprimir_usuario(bot),
     write('Te recomendamos el restaurante '),write(A),write('\n'),
     write(' Ubicado:  '),
@@ -78,6 +82,7 @@ generar_respuesta(M):-
 
 leer([X|_],X).
 leerfinal([_|X],X).
+valorarPizza(R):- R=pizza.
 
 % imprimir_lista/1
 % Imprime una lista (oracion) sin corchetes ni comas.

@@ -4,7 +4,7 @@
 saludo:- write('Hola!!! ¿Qué se te antoja comer hoy?'),
          write('\n').
 
-verificar(X):- member(X,[pizza,hamburguesa,papas,calzone,tacos,espagueti]).
+verificar(X):- member(X,[pizza,hamburguesa,papas,calzone,tacos,espagueti,lomo,chicharron,costillas,alitas,casado,galloPinto,lazana,pollofrito,salchipapas,risoto,carpachio,tortaHuevo,ollaCarne]).
 
 
 %----------------------Patrones-----------------------------------
@@ -60,11 +60,14 @@ generar_respuesta(M):-
     imprimir_lista(Z),
     imprimir_usuario(usuario),
     readln(B),analizar(B,N),
+    (valorarPizza(R) -> imprimir_usuario(bot),  write('De que sabor desea su pizza'),write('\n'),
+     readln(U),analizar(U,O); O='no hay nada'),
+
     %leer(Q,Z),
 
     %leer(T,V),
 
-    (dondeComer(A,R,T,N,Q) ->
+    (dondeComer(A,R,T,N,Q,O) ->
     imprimir_usuario(bot),
     write('Te recomendamos el restaurante '),write(A),write('\n'),
     write(' Ubicado:  '),
@@ -78,6 +81,7 @@ generar_respuesta(M):-
 
 leer([X|_],X).
 leerfinal([_|X],X).
+valorarPizza(R):- R=pizza.
 
 % imprimir_lista/1
 % Imprime una lista (oracion) sin corchetes ni comas.
