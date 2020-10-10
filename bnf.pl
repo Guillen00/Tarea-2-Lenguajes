@@ -115,11 +115,7 @@ sintagma_verbal(S0, S, R) :-
 % Adverbios
 adverbio([cerca|S], S).
 adverbio([hoy|S], S).
-adverbio([muy|S], S).
-adverbio([bastante|S], S).
 adverbio([mucho|S], S).
-adverbio([no|S], S).
-adverbio([si|S], S).
 
 %Determinantes
 
@@ -140,10 +136,10 @@ determinante([sus|S], S).
 
 determinante([beber|S], S).
 determinante([comer|S], S).
+determinante([tomar|S], S).
+determinante([pedir|S], S).
 
 determinante([algunos|S], S).
-determinante([pocos|S], S).
-determinante([varios|S], S).
 determinante([mucho|S], S).
 determinante([muchos|S], S).
 determinante([mucha|S], S).
@@ -159,12 +155,6 @@ pronombre([ellas|S],S).
 pronombre([nosotros|S],S).
 pronombre([nosotras|S],S).
 
-pronombre([me|S], S).
-pronombre([te|S], S).
-pronombre([se|S], S).
-pronombre([nos|S], S).
-pronombre([os|S], S).
-
 %Proposicion
 proposicion([de|S], S).
 proposicion([a|S], S).
@@ -174,25 +164,7 @@ proposicion([para|S], S).
 
 %Sustantivos
 sustantivo([_|S], S).
-
 sustantivo2([_|S],S).
-sustantivo2([italiano|S], S).
-sustantivo2([rapida|S], S).
-sustantivo2([pizza|S], S).
-sustantivo2([calzone|S], S).
-sustantivo2([espaguetti|S], S).
-sustantivo2([hamburguesa|S], S).
-sustantivo2([hamburguesa|S], S).
-sustantivo2([tacos|S], S).
-sustantivo2([papas|S], S).
-sustantivo2([jamon|S], S).
-sustantivo2([suprema|S], S).
-sustantivo2([hawaina|S], S).
-sustantivo2([pepperoni|S], S).
-sustantivo2([jamon|S], S).
-sustantivo2([cartago|S], S).
-sustantivo2([sanpedro|S], S).
-sustantivo2([alajuela|S], S).
 
 %Verbos
 
