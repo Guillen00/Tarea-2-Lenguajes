@@ -61,6 +61,7 @@ generar_respuesta(M):-
     imprimir_usuario(usuario),
     readln(B),analizar(B,N),
     (valorarPizza(R) -> imprimir_usuario(bot),  write('De que sabor desea su pizza'),write('\n'),
+     imprimir_usuario(usuario),
      readln(U),analizar(U,O); O='no hay nada'),
 
     %leer(Q,Z),
