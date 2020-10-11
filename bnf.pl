@@ -164,7 +164,7 @@ pronombre([ellos|S],S).
 pronombre([ellas|S],S).
 pronombre([nosotros|S],S).
 pronombre([nosotras|S],S).
-
+pronombre([me|S],S).
 %Proposicion
 proposicion([de|S], S).
 proposicion([a|S], S).
@@ -185,7 +185,7 @@ verbo([queremos|S], S).
 verbo([deseamos|S], S).
 verbo([deseo|S], S).
 verbo([desea|S], S).
-
+verbo([gustaria|S],S).
 
 %Adjetivos
 
