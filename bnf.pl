@@ -1,13 +1,25 @@
 
+%--------------------------------------------------------%
+%Analizar: Funcion para buscar la palabra clave de una oracion
 analizar(S0,R0):-unlist(R,R0),
 		remover(.,S0,S),
                 oracion(S,[], R).
+
+%---------------------------------------------------------%
+%Remover: Remueve el ultimo elemento de una lista.
 
 remover(X, [X|Xs], Xs).
 remover(X, [Y|Ys], [Y|Zs]):-
 remover(X, Ys, Zs).
 
+
+%---------------------------------------------------------%
+%Unlist: Seca el primer elemento de la lista.
 unlist([X|_],X):-!.
+
+
+%---------------------------------------------------------%
+%Oracion: Obtiene la palabra clave de las oraciones correctas
 
 %El quiere pizza
 oracion(S0,S, R) :-
@@ -88,8 +100,10 @@ oracion(S0,S, R) :-
 oracion(S0,S, R) :-
     sintagma_verbal(S0, S, R).
 
-%Sintagmas
+%-----------------------------------------------------%
+%Definicion de Sintagmas
 
+%Sintagmas nominales
 sintagma_nominal(S0, S) :-
     determinante(S0, S1),
     sustantivo(S1, S).
@@ -111,6 +125,8 @@ sintagma_nominal2(S0, S,R) :-
     sustantivo2(S0,S),
     R=S0.
 
+%Sintagmas verbales
+
 sintagma_verbal0(S0, S) :-
     verbo(S0, S1),
     sintagma_nominal(S1, S).
@@ -122,12 +138,14 @@ sintagma_verbal(S0, S, R) :-
 sintagma_verbal2(S0, S) :-
     verbo(S0, S).
 
-% Adverbios
+%------------------------------------------------------%
+% Definicion de Adverbios
 adverbio([cerca|S], S).
 adverbio([hoy|S], S).
 adverbio([mucho|S], S).
 
-%Determinantes
+%------------------------------------------------------%
+% Definicion de determinantes
 
 determinante([el|S], S).
 determinante([la|S], S).
@@ -155,7 +173,9 @@ determinante([muchos|S], S).
 determinante([mucha|S], S).
 determinante([muchas|S], S).
 
-% Pronombres
+%------------------------------------------------------%
+% Definicion de pronombres
+
 pronombre([yo|S], S).
 pronombre([tu|S],S).
 pronombre([el|S],S).
@@ -165,18 +185,28 @@ pronombre([ellas|S],S).
 pronombre([nosotros|S],S).
 pronombre([nosotras|S],S).
 pronombre([me|S],S).
-%Proposicion
+
+%------------------------------------------------------%
+% Definicion de proposicion
+
 proposicion([de|S], S).
 proposicion([a|S], S).
 proposicion([en|S], S).
 proposicion([para|S], S).
 
 
-%Sustantivos
+%------------------------------------------------------%
+% Definicion de Sustantivos
+
+%Se dejan en blanco porque se admiten infinitas posibilidades, se
+%controla mediante la posicion en a oracion
+
 sustantivo([_|S], S).
 sustantivo2([_|S],S).
 
-%Verbos
+
+%------------------------------------------------------%
+% Definicion de Verbos
 
 verbo([somos|S], S).
 verbo([quiero|S], S).
@@ -187,6 +217,10 @@ verbo([deseo|S], S).
 verbo([desea|S], S).
 verbo([gustaria|S],S).
 
-%Adjetivos
+
+%------------------------------------------------------%
+% Definicion de adjetivos
+
+%Solo se consideran numeros
 
 adjetivos([M|S],S):-integer(M).
