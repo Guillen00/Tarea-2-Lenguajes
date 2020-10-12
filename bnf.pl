@@ -139,10 +139,20 @@ oracion(S0,S, R) :-
 
 %-----------------------------------------------------%
 
-% Se define oracion2 como oracion pero con una interjeccion final%
+% Se define oracion2 como oracion pero con una resto de maximo 3
+% palabras despues de la palabra relevante
+%
 oracion2(S0,S, R) :-
     oracion(S0, S1, R),
-    interjeccion(S1,S).
+    resto1(S1,S).
+
+oracion2(S0,S, R) :-
+    oracion(S0, S1, R),
+    resto2(S1,S).
+
+oracion2(S0,S, R) :-
+    oracion(S0, S1, R),
+    resto3(S1,S).
 
 
 %-----------------------------------------------------%
@@ -278,8 +288,9 @@ adjetivos([lejos|S],S).
 
 
 %-----------------------------------------------------%
-%Definicion de interjeccion:
+%Definicion de resto: Corresponde a una a tres palabras adicionales
 
 
-interjeccion([por,favor|S],S).
-interjeccion([gracias|S],S).
+resto3([_,_,_|S],S).
+resto2([_,_|S],S).
+resto1([_|S],S).
