@@ -139,10 +139,18 @@ oracion(S0,S, R) :-
 
 %-----------------------------------------------------%
 
-% Se define oracion2 como oracion pero con una interjeccion final%
+% Se define oracion2 como oracion pero con hasta tres palabras
+% adicionales sin revisar.
+
 oracion2(S0,S, R) :-
     oracion(S0, S1, R),
-    interjeccion(S1,S).
+    resto1(S1,S).
+oracion2(S0,S, R) :-
+    oracion(S0, S1, R),
+    resto2(S1,S).
+oracion2(S0,S, R) :-
+    oracion(S0, S1, R),
+    resto3(S1,S).
 
 
 %-----------------------------------------------------%
@@ -164,6 +172,10 @@ sintagma_nominal2(S0, S, R) :-
 sintagma_nominal2(S0, S, R) :-
     adjetivos(S0, S1),
     sustantivo(S1,S),
+    R=S0.
+
+sintagma_nominal2(S0, S, R) :-
+    adjetivos(S0, S),
     R=S0.
 
 sintagma_nominal2(S0, S,R) :-
@@ -207,11 +219,6 @@ determinante([mis|S], S).
 determinante([su|S], S).
 determinante([sus|S], S).
 
-determinante([beber|S], S).
-determinante([comer|S], S).
-determinante([tomar|S], S).
-determinante([pedir|S], S).
-
 determinante([algunos|S], S).
 determinante([mucho|S], S).
 determinante([muchos|S], S).
@@ -250,22 +257,33 @@ proposicion([para|S], S).
 %controla mediante la posicion en a oracion
 
 sustantivo([_|S], S).
-sustantivo2([_|S],S).
-
+sustantivo2([Y|S],S):-not((verbo([Y],[]);
+                          adverbio([Y],[]);
+                          proposicion([Y],[]);
+                          adjetivos([Y],[]);
+                          determinante([Y],[]);
+                          pronombre([Y],[]))).
 
 %------------------------------------------------------%
 % Definicion de Verbos
 
-verbo([somos|S], S).
-verbo([quiero|S], S).
-verbo([quiere|S], S).
-verbo([queremos|S], S).
-verbo([quisiera|S], S).
-verbo([quisieramos|S], S).
-verbo([deseamos|S], S).
-verbo([deseo|S], S).
-verbo([desea|S], S).
-verbo([gustaria|S],S).
+verbo_aux([somos|S], S).
+verbo_aux([quiero|S], S).
+verbo_aux([quiere|S], S).
+verbo_aux([queremos|S], S).
+verbo_aux([quisiera|S], S).
+verbo_aux([quisieramos|S], S).
+verbo_aux([deseamos|S], S).
+verbo_aux([deseo|S], S).
+verbo_aux([desea|S], S).
+verbo_aux([gustaria|S],S).
+
+verbo([S0,beber|S],S):-verbo_aux([S0],[]).
+verbo([S0,comer|S],S):-verbo_aux([S0],[]).
+verbo([S0,tomar|S],S):-verbo_aux([S0],[]).
+verbo([S0,pedir|S],S):-verbo_aux([S0],[]).
+verbo(S0,S):-verbo_aux(S0,S).
+
 
 
 %------------------------------------------------------%
@@ -278,8 +296,10 @@ adjetivos([lejos|S],S).
 
 
 %-----------------------------------------------------%
-%Definicion de interjeccion:
+% Definicion de resto: Se permiten hasta tres palabras adicionales sin
+% revision
 
 
-interjeccion([por,favor|S],S).
-interjeccion([gracias|S],S).
+resto1([_|S],S).
+resto2([_,_|S],S).
+resto3([_,_,_|S],S).
