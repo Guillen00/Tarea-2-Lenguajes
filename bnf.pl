@@ -26,6 +26,36 @@ unlist([X|_],X):-!.
 %Oracion: Obtiene la palabra clave de las oraciones correctas
 
 
+%Cerca de sanpedro
+oracion(S0,S,R):-
+    adjetivos(S0,S1),
+    proposicion(S1,S2),
+    sintagma_nominal2(S2, S,R).
+
+%Me gustaria cerca de sanpedro
+oracion(S0,S,R):-
+    pronombre(S0, S1),
+    sintagma_verbal2(S1, S2),
+    adjetivos(S2,S3),
+    proposicion(S3,S4),
+    sintagma_nominal2(S4, S,R).
+
+%Algo cerca de sanpedro
+oracion(S0,S,R):-
+    sustantivo(S0,S1),
+    adjetivos(S1,S2),
+    proposicion(S2,S3),
+    sintagma_nominal2(S3, S,R).
+
+%Me gustaria algo cerca de sanpedro
+oracion(S0,S,R):-
+    pronombre(S0, S1),
+    sintagma_verbal2(S1, S2),
+    sustantivo(S2,S3),
+    adjetivos(S3,S4),
+    proposicion(S4,S5),
+    sintagma_nominal2(S5, S,R).
+
 %El quiere pizza
 oracion(S0,S, R) :-
     pronombre(S0, S1),
@@ -55,7 +85,8 @@ oracion(S0,S, R) :-
     sintagma_nominal(S0, S1),
     sintagma_verbal(S1, S, R).
 
-%Deseo reservar para 5 personas
+%Deseo reservar para 5
+%
 oracion(S0,S, R) :-
     sintagma_verbal0(S0, S1),
     proposicion(S1,S2),
@@ -88,6 +119,7 @@ oracion(S0,S, R) :-
     proposicion(S1, S2),
     sintagma_nominal2(S2, S,R).
 
+
 %Mi papa hoy quiere pizza
 oracion(S0,S, R) :-
     sintagma_nominal(S0, S1),
@@ -107,12 +139,10 @@ oracion(S0,S, R) :-
 
 %-----------------------------------------------------%
 
-% Se define oracion2 como oracion pero con hasta 3 palabras adicionales,
-% posteriores a la palabra relevante.
-%
+% Se define oracion2 como oracion pero con una interjeccion final%
 oracion2(S0,S, R) :-
     oracion(S0, S1, R),
-    resto(S1,S).
+    interjeccion(S1,S).
 
 
 %-----------------------------------------------------%
@@ -188,6 +218,7 @@ determinante([muchos|S], S).
 determinante([mucha|S], S).
 determinante([muchas|S], S).
 
+determinante([como|S],S).
 %------------------------------------------------------%
 % Definicion de pronombres
 
@@ -200,6 +231,8 @@ pronombre([ellas|S],S).
 pronombre([nosotros|S],S).
 pronombre([nosotras|S],S).
 pronombre([me|S],S).
+pronombre([nos|S],S).
+pronombre([le|S],S).
 
 %------------------------------------------------------%
 % Definicion de proposicion
@@ -228,6 +261,7 @@ verbo([quiero|S], S).
 verbo([quiere|S], S).
 verbo([queremos|S], S).
 verbo([quisiera|S], S).
+verbo([quisieramos|S], S).
 verbo([deseamos|S], S).
 verbo([deseo|S], S).
 verbo([desea|S], S).
@@ -237,15 +271,15 @@ verbo([gustaria|S],S).
 %------------------------------------------------------%
 % Definicion de adjetivos
 
-%Solo se consideran numeros
 
 adjetivos([M|S],S):-integer(M).
+adjetivos([cerca|S],S).
+adjetivos([lejos|S],S).
 
 
 %-----------------------------------------------------%
-%Definicion de resto: Corresponde a una a tres palabras adicionales
+%Definicion de interjeccion:
 
 
-resto([_,_,_|S],S).
-resto([_,_|S],S).
-resto([_|S],S).
+interjeccion([por,favor|S],S).
+interjeccion([gracias|S],S).

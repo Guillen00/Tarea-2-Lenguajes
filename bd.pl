@@ -12,6 +12,7 @@ comida(bellaItalia,lazana).
 
 
 comida(mcBurguesa,hamburguesas).
+comida(mcBurguesa,hamburguesa).
 comida(mcBurguesa,tacos).
 comida(mcBurguesa,papas).
 comida(mcBurguesa,pollofrito).
