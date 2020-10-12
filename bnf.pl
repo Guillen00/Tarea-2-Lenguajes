@@ -1,9 +1,13 @@
 
 %--------------------------------------------------------%
-%Analizar: Funcion para buscar la palabra clave de una oracion
+%Analizar: Funcion para buscar la palabra clave R0 de una oracion S0
 analizar(S0,R0):-unlist(R,R0),
 		remover(.,S0,S),
                 oracion(S,[], R).
+
+analizar(S0,R0):-unlist(R,R0),
+		remover(.,S0,S),
+                oracion2(S,[], R).
 
 %---------------------------------------------------------%
 %Remover: Remueve el ultimo elemento de una lista.
@@ -20,6 +24,7 @@ unlist([X|_],X):-!.
 
 %---------------------------------------------------------%
 %Oracion: Obtiene la palabra clave de las oraciones correctas
+
 
 %El quiere pizza
 oracion(S0,S, R) :-
@@ -99,6 +104,16 @@ oracion(S0,S, R) :-
 %somos 8 personas
 oracion(S0,S, R) :-
     sintagma_verbal(S0, S, R).
+
+%-----------------------------------------------------%
+
+% Se define oracion2 como oracion pero con hasta 3 palabras adicionales,
+% posteriores a la palabra relevante.
+%
+oracion2(S0,S, R) :-
+    oracion(S0, S1, R),
+    resto(S1,S).
+
 
 %-----------------------------------------------------%
 %Definicion de Sintagmas
@@ -212,6 +227,7 @@ verbo([somos|S], S).
 verbo([quiero|S], S).
 verbo([quiere|S], S).
 verbo([queremos|S], S).
+verbo([quisiera|S], S).
 verbo([deseamos|S], S).
 verbo([deseo|S], S).
 verbo([desea|S], S).
@@ -224,3 +240,12 @@ verbo([gustaria|S],S).
 %Solo se consideran numeros
 
 adjetivos([M|S],S):-integer(M).
+
+
+%-----------------------------------------------------%
+%Definicion de resto: Corresponde a una a tres palabras adicionales
+
+
+resto([_,_,_|S],S).
+resto([_,_|S],S).
+resto([_|S],S).

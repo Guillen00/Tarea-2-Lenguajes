@@ -48,25 +48,25 @@ conversacion:-
 % tiene registro de esa comida.
 generar_respuesta(M):-
      %patron(M,R),
-    analizar(M,R),
+    analizar2(M,R),
     (verificar(R) ->
     pregunta([X|_]),imprimir_usuario(bot),
     imprimir_lista(X),
     imprimir_usuario(usuario),
-    readln(D),analizar(D,T),
+    readln(D),analizar2(D,T),
 
     pregunta([_|Y]), leer(Y,C),imprimir_usuario(bot),
     imprimir_lista(C),
     imprimir_usuario(usuario),
-    readln(E),analizar(E,Q),
+    readln(E),analizar2(E,Q),
 
     pregunta([_|Y]), leerfinal(Y,S),leer(S,Z),imprimir_usuario(bot),
     imprimir_lista(Z),
     imprimir_usuario(usuario),
-    readln(B),analizar(B,N),
+    readln(B),analizar2(B,N),
     (valorarPizza(R) -> imprimir_usuario(bot),  write('De que sabor desea su pizza'),write('\n'),
      imprimir_usuario(usuario),
-     readln(U),analizar(U,O); O='no hay nada'),
+     readln(U),analizar2(U,O); O='no hay nada'),
 
 
     (dondeComer(A,R,T,N,Q,O) ->
@@ -74,8 +74,8 @@ generar_respuesta(M):-
     write('Te recomendamos el restaurante '),write(A),write('\n'),
     write(' Ubicado:  '),
     direccion(A,L),write(L),write('\n'),
-    write('Su reservación ha sido tramitada.'),write('\n'),
-    dispocisiones(A,I),write(I)
+    write('Su reservación ha sido tramitada'),write('\n'),
+     dispocisiones(A,I),write(I)
      ;write('Aun no contamos con algun registro de algun restaurante con esas especificaciones.') )
     ;
     write('Aun no contamos con algun registro de esa comida.')).
@@ -94,3 +94,15 @@ imprimir_lista([H|T]):-
     write(H),
     write(' '),
     imprimir_lista(T).
+
+
+% Llama a analizar la sintaxis de las oraciones para encontrar la
+% palabra relevante, vuelve a preguntar en caso de error en la sintaxis.
+analizar2(S0, R0):- analizar(S0,R0);
+                   imprimir_usuario(bot),
+                   write('\n       ¡Usas un lenguaje muy complejo!\n       Trata de simplificar tus oraciones\n'),
+                   imprimir_usuario(usuario),
+                   readln(S),
+                   append(S,[],M),
+                   analizar2(M,R0).
+

@@ -73,7 +73,7 @@ lugar(italianisimo,alajuela).
 lugar(asadoCR,cartago).
 lugar(miTierra,heredia).
 
-direccion(bellaItalia,"100m Norte de la entrada principal del TEC").
+direccion(bellaItalia,"100m Norte de la entrada principal de la Ciudad de la Investigacion").
 direccion(mcBurguesa,"50m Sur de la entrada Banco de Costa Rica").
 direccion(italianisimo,"50m Sur del estadio Alejandro Morea Soto").
 direccion(miTierra," 250m Sur de la Basilica de los Angeles").
@@ -82,7 +82,7 @@ direccion(asadoCR," 25m norte de la entrada principal de la UNA").
 dispocisiones(bellaItalia,"Solo se permiten burbujas").
 dispocisiones(mcBurguesa,"Solo se permiten burbujas recordar el uso de mascarilla y el lavado de manos antes de ingresar al local").
 dispocisiones(italianisimo ,"Recordar el uso de mascarilla y el lavado de manos antes de ingresar al local").
-dispocisiones(asadosCR," Recuerde que debemos cuidarnos, utilice la mascarilla y haga el lavado de manos adecuado antes de entrar al local").
+dispocisiones(asadoCR," Recuerde que debemos cuidarnos, utilice la mascarilla y haga el lavado de manos adecuado antes de entrar al local").
 dispocisiones(miTierra,"Venga con su burbuja social y protejamonos todos").
 
 
