@@ -1,8 +1,8 @@
 %--------------------------------------------------Hechos----------------------------------------------------------------------------------------------------------
 
 %Restaurantes
-%Se guarda en la bd los 5 restaunrestes que va a manejar nuestra aplicacion 
-%restaurante(X) X= alguno de los restaurantes 
+%Se guarda en la bd los 5 restaunrestes que va a manejar nuestra aplicacion
+%restaurante(X) X= alguno de los restaurantes
 
 restaurante(bellaItalia).
 restaurante(mcBurguesa).
@@ -11,9 +11,9 @@ restaurante(asadoCR).
 restaurante(miTierra).
 
 %Comidas
-%Se guarda el tipo de comida segun el restaurante  
+%Se guarda el tipo de comida segun el restaurante
 %comida(X,Y) X= restaurante, Y = la comida.
- 
+
 comida(bellaItalia,pizza,jamon).
 comida(bellaItalia,calzone).
 comida(bellaItalia,espagueti).
@@ -87,8 +87,8 @@ bebida(mcBurguesa,frescoNatural).
 
 %---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-%Capacidad de un local 
-%capacidad(X,Num) X = restaunraten , Num = numero maximo de persona que recibe el restaurante 
+%Capacidad de un local
+%capacidad(X,Num) X = restaunraten , Num = numero maximo de persona que recibe el restaurante
 capacidad(bellaItalia,10).
 capacidad(mcBurguesa,20).
 capacidad(italianisimo,50).
@@ -97,8 +97,9 @@ capacidad(miTierra,30).
 
 %---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-%Lugar en el cual se encuntra el restaurante 
-lugar(X,W) X = restaurante , W = lugar donde se encuantra el restuarante   
+%Lugar en el cual se encuntra el restaurante
+% lugar(X,W) X = restaurante , W = lugar donde se encuantra el
+% restuarante
 lugar(bellaItalia,sanPedro).
 lugar(mcBurguesa,cartago).
 lugar(italianisimo,alajuela).
@@ -107,7 +108,7 @@ lugar(miTierra,heredia).
 
 %---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-%Direcion excata donde se encuanta cada restaunrante 
+%Direcion excata donde se encuanta cada restaunrante
 
 direccion(bellaItalia,"100m Norte de la entrada principal de la Ciudad de la Investigacion").
 direccion(mcBurguesa,"50m Sur de la entrada Banco de Costa Rica").
@@ -117,7 +118,7 @@ direccion(asadoCR," 25m norte de la entrada principal de la UNA").
 
 %---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-%Dispociosiones salubles impuestas por cada restaurante a sus clientes 
+%Dispociosiones salubles impuestas por cada restaurante a sus clientes
 dispocisiones(bellaItalia,"Solo se permiten burbujas").
 dispocisiones(mcBurguesa,"Solo se permiten burbujas recordar el uso de mascarilla y el lavado de manos antes de ingresar al local").
 dispocisiones(italianisimo ,"Recordar el uso de mascarilla y el lavado de manos antes de ingresar al local").
