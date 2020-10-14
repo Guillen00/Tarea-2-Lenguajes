@@ -139,18 +139,11 @@ oracion(S0,S, R) :-
 
 %-----------------------------------------------------%
 
-% Se define oracion2 como oracion pero con hasta tres palabras
-% adicionales sin revisar.
+% Se define oracion2 como oracion pero con una interjeccion.
 
 oracion2(S0,S, R) :-
     oracion(S0, S1, R),
-    resto1(S1,S).
-oracion2(S0,S, R) :-
-    oracion(S0, S1, R),
-    resto2(S1,S).
-oracion2(S0,S, R) :-
-    oracion(S0, S1, R),
-    resto3(S1,S).
+    interjeccion(S1,S).
 
 
 %-----------------------------------------------------%
@@ -296,10 +289,7 @@ adjetivos([lejos|S],S).
 
 
 %-----------------------------------------------------%
-% Definicion de resto: Se permiten hasta tres palabras adicionales sin
-% revision
+% Definicion de interjeccion
 
-
-resto1([_|S],S).
-resto2([_,_|S],S).
-resto3([_,_,_|S],S).
+interjeccion([gracias|S],S).
+interjeccion([por,favor|S],S).
