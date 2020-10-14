@@ -56,6 +56,19 @@ oracion(S0,S,R):-
     proposicion(S4,S5),
     sintagma_nominal2(S5, S,R).
 
+%Me gustaria reservar en sanpedro
+oracion(S0,S,R):-
+    pronombre(S0, S1),
+    sintagma_verbal2(S1, S2),
+    proposicion(S2,S3),
+    sintagma_nominal2(S3, S,R).
+
+%Quiero reservar en sanpedro
+oracion(S0,S,R):-
+    sintagma_verbal2(S0, S1),
+    proposicion(S1,S2),
+    sintagma_nominal2(S2, S,R).
+
 %El quiere pizza
 oracion(S0,S, R) :-
     pronombre(S0, S1),
@@ -275,6 +288,7 @@ verbo([S0,beber|S],S):-verbo_aux([S0],[]).
 verbo([S0,comer|S],S):-verbo_aux([S0],[]).
 verbo([S0,tomar|S],S):-verbo_aux([S0],[]).
 verbo([S0,pedir|S],S):-verbo_aux([S0],[]).
+verbo([S0,reservar|S],S):-verbo_aux([S0],[]).
 verbo(S0,S):-verbo_aux(S0,S).
 
 
