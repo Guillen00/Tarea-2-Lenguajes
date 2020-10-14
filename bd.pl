@@ -41,7 +41,7 @@ comida(italianisimo,carpachio).
 comida(asadoCR,lomo).
 comida(asadoCR,chicharron).
 comida(asadoCR,costilla).
-comida(asadoCR,alistas).
+comida(asadoCR,alitas).
 
 %---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
