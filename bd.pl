@@ -13,14 +13,15 @@ restaurante(miTierra).
 %Comidas
 %Se guarda el tipo de comida segun el restaurante
 %comida(X,Y) X= restaurante, Y = la comida.
-
+%
+comida(italianisimo,pizza,peperoni).
 comida(bellaItalia,pizza,jamon).
 comida(bellaItalia,calzone).
 comida(bellaItalia,espagueti).
 comida(bellaItalia,lazana).
 
 %---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-comida(mcBurguesa,hamburguesas).
+
 comida(mcBurguesa,hamburguesa).
 comida(mcBurguesa,tacos).
 comida(mcBurguesa,papas).
@@ -31,7 +32,6 @@ comida(mcBurguesa,salchipapas).
 
 comida(italianisimo,calzone).
 comida(italianisimo,espagueti).
-comida(italianisimo,pizza).
 comida(italianisimo,lazana).
 comida(italianisimo,risoto).
 comida(italianisimo,carpachio).
@@ -135,4 +135,25 @@ dondeComer(RESTAURANTE,COMIDA,LUGAR,BEBIDA,Npersonas,TP) :- restaurante(RESTAURA
     bebida(RESTAURANTE,BEBIDA),
     lugar(RESTAURANTE,LUGAR),
     capacidad(RESTAURANTE,Capacidad),Capacidad>Npersonas.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
