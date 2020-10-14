@@ -100,7 +100,7 @@ imprimir_lista([H|T]):-
 % palabra relevante, vuelve a preguntar en caso de error en la sintaxis.
 analizar2(S0, R0):- analizar(S0,R0);
                    imprimir_usuario(bot),
-                   write('\n       ¡Usas un lenguaje muy complejo!\n       Trata de simplificar tus oraciones\n'),
+                   write('\n       ¡Vaya no entendi!\n       Trata de usar el lenguaje explicado en el manual de usuario\n'),
                    imprimir_usuario(usuario),
                    readln(S),
                    append(S,[],M),
